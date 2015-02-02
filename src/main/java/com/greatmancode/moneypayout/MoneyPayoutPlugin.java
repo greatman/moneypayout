@@ -5,7 +5,6 @@ import com.greatmancode.moneypayout.backend.MySQLBackend;
 import com.greatmancode.moneypayout.commands.*;
 import com.greatmancode.moneypayout.listeners.BlockListener;
 import com.greatmancode.moneypayout.listeners.PlayerListener;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
