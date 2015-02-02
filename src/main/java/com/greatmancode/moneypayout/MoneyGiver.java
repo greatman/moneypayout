@@ -2,9 +2,7 @@ package com.greatmancode.moneypayout;
 
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class MoneyGiver implements Runnable {
 
@@ -24,9 +22,13 @@ public class MoneyGiver implements Runnable {
                 continue;
             }
 
-            String group = plugin.getPermissions().getPrimaryGroup(player);
-            if (!plugin.getConfig().contains("Group." + group)) {
-                continue;
+            Set<String> groups = plugin.getConfig().getConfigurationSection("Groups").getKeys(false);
+            String group = "default";
+            for (String groupEntry: groups) {
+                if (player.hasPermission("moneypayout.group." +groupEntry)) {
+                    group = groupEntry;
+                    break;
+                }
             }
 
             int timeout = plugin.getConfig().getInt("Group." + group + ".AFKTimeout");

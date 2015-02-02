@@ -17,6 +17,8 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.Set;
+
 public class BlockListener implements Listener{
 
     private final MoneyPayoutPlugin plugin;
@@ -103,16 +105,22 @@ public class BlockListener implements Listener{
                             + ChatColor.GRAY + "]")) {
                 if (player.hasPermission("moneypayout.atm.use")) {
                     final double result = plugin.cashOut(player);
-                    final double val = plugin.getConfig().getDouble(
-                            "Group."
-                                    + plugin.getPermissions().getPrimaryGroup(null, player) + ".MoneyPerMinute", (double) -1);
+                    Set<String> groups = plugin.getConfig().getConfigurationSection("Groups").getKeys(false);
+                    String group = "default";
+                    for (String groupEntry: groups) {
+                        if (player.hasPermission("moneypayout.group." +groupEntry)) {
+                            group = groupEntry;
+                            break;
+                        }
+                    }
+                    final double val = plugin.getConfig().getDouble("Group." + group + ".MoneyPerMinute", -1);
 
                     String msg = ChatColor.YELLOW
                             + AbstractCommand.PREFIX
                             + ChatColor.GOLD
                             + "Cashed out %MONEY% to your account. You earn that for playing for %TIME% minutes.";
                     msg = msg.replace("%MONEY%", plugin.getEconomy().format(result));
-                    msg = msg.replace("%TIME%", (int)(result / val) + "");
+                    msg = msg.replace("%TIME%", (int) (result / val) + "");
                     player.sendMessage(msg);
                 }
                 return true;
