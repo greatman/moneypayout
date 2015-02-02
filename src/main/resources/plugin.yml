@@ -1,0 +1,38 @@
+name: "MoneyPayout"
+author: "greatman"
+version: 1.0
+main: com.greatmancode.moneypayout.MoneyPayoutPlugin
+commands:
+  moneypayout:
+    description: "MoneyPayout main ocmmand"
+permissions:
+  moneypayout.all:
+    default: op
+    children:
+      moneypayout.add: true
+      moneypayout.stats.self: true
+      moneypayout.stats.other: true
+      moneypayout.cashout.self: true
+      moneypayout.cashout.other: true
+      moneypayout.reload: true
+      moneypayout.remove: true
+      moneypayout.atm.use: true
+      moneypayout.atm.create: true
+  moneypayout.add:
+    default: false
+  moneypayout.stats.self:
+    default: false
+  moneypayout.stats.other:
+    default: false
+  moneypayout.cashout.self:
+    default: false
+  moneypayout.reload:
+    default: false
+  moneypayout.cashout.other:
+    default: false
+  moneypayout.remove:
+    default: false
+  moneypayout.atm.use:
+    default: false
+  moneypayout.atm.create:
+    default: false

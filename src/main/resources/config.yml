@@ -1,0 +1,14 @@
+databaseType: mysql
+sql:
+  host: localhost
+  port: 3306
+  username: root
+  password: root
+  database: moneypayout
+Group: #Below here are the configure groups
+  default: #The Default group
+    AFKTimeout: 5.0 #How long the plugin should wait before stopping paying the player. In minutes! -1 will disable the timeout.
+    MoneyPerMinute: 2.0 #How much money the player should get. In minutes!
+    InstantPayout: false #If the plugin should auto cashout the money, for the player.
+    MaxMoneyEarnPerDay: 20000.0 #How much money the player can earn per 24 hours, from when the server was started. -1 will disable the max money per day.
+    MaxMoneyEarnPerSession: 10000.0 #How much money the can earn from when the player connected. -1 will disable the max money per session.
