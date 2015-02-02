@@ -22,7 +22,7 @@ public class MoneyGiver implements Runnable {
                 continue;
             }
 
-            Set<String> groups = plugin.getConfig().getConfigurationSection("Groups").getKeys(false);
+            Set<String> groups = plugin.getConfig().getConfigurationSection("Group").getKeys(false);
             String group = "default";
             for (String groupEntry: groups) {
                 if (player.hasPermission("moneypayout.group." +groupEntry)) {

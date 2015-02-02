@@ -105,7 +105,7 @@ public class BlockListener implements Listener{
                             + ChatColor.GRAY + "]")) {
                 if (player.hasPermission("moneypayout.atm.use")) {
                     final double result = plugin.cashOut(player);
-                    Set<String> groups = plugin.getConfig().getConfigurationSection("Groups").getKeys(false);
+                    Set<String> groups = plugin.getConfig().getConfigurationSection("Group").getKeys(false);
                     String group = "default";
                     for (String groupEntry: groups) {
                         if (player.hasPermission("moneypayout.group." +groupEntry)) {
